@@ -1,0 +1,38 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f0f0f0; /* Cor de fundo da página */
+}
+
+.title-container {
+  background-image: url("https://i.imgur.com/ItoeRUl.jpg"); /* Imagem de fundo */
+  background-size: cover;
+  background-position: center bottom;
+  padding: 0%;
+  text-align: center;
+  color: white; /* Cor do texto */
+  width: 100%;
+  font-family: 'MinecraftFont';
+}
+
+.description-container {
+  background-color: #179f05; /* Cor de fundo do container de descrição */
+  padding: 20px;
+  margin: 20px;
+  border: 2px solid #05de0d; /* Borda ao redor do retângulo */
+  /* Outras propriedades de estilização para o container de descrição */
+}
+
+.description-rectangle {
+}
+
+/* 
+body {
+	font-family: 'MinecraftFont', sans-serif;
+} */
+
+@font-face {
+	font-family: 'MinecraftFont';
+	src: url('./assets/minecraft_font.ttf') format('truetype');
+  }
