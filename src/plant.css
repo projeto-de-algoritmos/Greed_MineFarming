@@ -1,0 +1,5 @@
+.plant-image {
+	/* Defina o tamanho desejado para as imagens */
+	width: 30%; /* Largura em pixels */
+	height: 30%; /* Altura automática para manter a proporção original */
+  }

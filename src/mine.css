@@ -3,6 +3,10 @@
   flex-direction: column;
   align-items: center;
   background-color: #f0f0f0; /* Cor de fundo da página */
+  width: 98vw; /* 100% da largura da viewport */
+  height: 98vh; /* 100% da altura da viewport */
+  margin: 0; 
+  padding: 0; 
 }
 
 .title-container {
@@ -17,14 +21,43 @@
 }
 
 .description-container {
-  background-color: #179f05; /* Cor de fundo do container de descrição */
+  background-color: #63482e; /* Cor de fundo do container de descrição */
   padding: 20px;
   margin: 20px;
   border: 2px solid #05de0d; /* Borda ao redor do retângulo */
   /* Outras propriedades de estilização para o container de descrição */
 }
 
-.description-rectangle {
+.description {
+	font-size: 90%;
+}
+
+.knapsack {
+	display: flex;
+	justify-content: flex-start;
+	border: 2px solid #de1717; 
+	width: 100%;
+
+}
+
+.plant-container {
+	border: 2px solid #156598; 
+	padding-right: 20%;
+	background-color: #ffff; /* Cor de fundo da página */
+  margin: 0;
+}
+
+.handle-game {
+  display: flex;
+  flex-direction: column;
+	border: 2px solid #cf09d5; 
+	width: 65%;
+  background-color: #f0f0f0;
+
+}
+
+.handle-result {
+	border: 2px solid #020202; 
 }
 
 /* 
