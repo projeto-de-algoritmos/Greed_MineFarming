@@ -1,81 +1,43 @@
 function knapsack(items, capacity) {
-    const n = items.length;
+  // Calculo de proporção valor/peso
+  items = items.map((item) => ({
+    ...item,
+    ratio: item.value / item.weight,
+  }));
 
-    const dp = new Array(n + 1)
-        .fill(null)
-        .map(() => new Array(capacity + 1).fill(0));
+  // Ordena por proporção, maior para menor
+  items.sort((a, b) => b.ratio - a.ratio);
 
-    for (let i = 1; i <= n; i++) {
-        const item = items[i - 1];
-        for (let w = 1; w <= capacity; w++) {
-            if (item.weight > w) {
-                dp[i][w] = dp[i - 1][w];
-            } else {
-                const maxQuantity = Math.min(
-                    item.quantity,
-                    Math.floor(w / item.weight)
-                );
-                let maxValue = 0;
-        
-                for (let q = 0; q <= maxQuantity; q++) {
-                    const includeValue =
-                    q * item.value + dp[i - 1][w - q * item.weight];
-                    if (includeValue > maxValue) {
-                        maxValue = includeValue;
-                    }
-                }
-                dp[i][w] = maxValue;
-            }
-        }
+  let totalValue = 0;
+  let knapsack = [];
+
+  for (const item of items) {
+    // Caso a mochila esteja cheia, encerra o loop
+    if (capacity <= 0) {
+      break;
     }
 
-    const selectedItemsWithQuantities = [];
-    let i = n;
-    let w = capacity;
+    const weightToTake = Math.min(item.weight, capacity);
+    const itemValue = item.ratio * weightToTake;
 
-    while (i > 0 && w > 0) {
-        if (dp[i][w] !== dp[i - 1][w]) {
-            const item = items[i - 1];
-            const maxQuantity = Math.min(
-                item.quantity,
-                Math.floor(w / item.weight)
-            );
-            let quantity = 0;
-            for (let q = 0; q <= maxQuantity; q++) {
-                if (dp[i][w] === q * item.value + dp[i - 1][w - q * item.weight]) {
-                    quantity = q;
-                    break;
-                }
-            }
-        
-            if (quantity > 0) {
-                selectedItemsWithQuantities.push({
-                    ...item,
-                    quantity,
-                });
-                w -= quantity * item.weight;
-            }
-        }
-        i--;
-    }
+    totalValue += itemValue;
+    knapsack.push({ ...item, taken: weightToTake });
 
-    return {
-        maxValue: dp[n][capacity],
-        selectedItems: selectedItemsWithQuantities.reverse(),
-    };
+    capacity -= weightToTake;
+  }
+
+  return { totalValue, knapsack };
 }
 
 export default knapsack()
 
-// Exemplo
+// Exemplo de teste
 const items = [
-    { name: "Item 1", weight: 5, value: 10, quantity: 1 },
-    { name: "Item 2", weight: 4, value: 40, quantity: 1 },
-    { name: "Item 3", weight: 6, value: 30, quantity: 1 },
-    { name: "Item 4", weight: 3, value: 50, quantity: 1 },
+  { name: "Item 1", weight: 10, value: 5 },
+  { name: "Item 2", weight: 20, value: 12 },
+  { name: "Item 3", weight: 30, value: 17 },
 ];
-const capacity = 10;
+const capacity = 45;
 const result = knapsack(items, capacity);
-
-console.log("Max Value:", result.maxValue);
-console.log("Selected Items with Quantities:", result.selectedItems);
+console.log("Total Value:", result.totalValue);
+console.log("Items in Knapsack:", result.knapsack);
