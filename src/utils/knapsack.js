@@ -26,18 +26,19 @@ function knapsack(items, capacity) {
     capacity -= weightToTake;
   }
 
-  return { totalValue, knapsack };
+  console.log("Total Value:", totalValue);
+  console.log("Items in Knapsack:", knapsack);
+
+  return totalValue;
 }
 
-export default knapsack()
+export default knapsack
 
 // Exemplo de teste
-const items = [
-  { name: "Item 1", weight: 10, value: 5 },
-  { name: "Item 2", weight: 20, value: 12 },
-  { name: "Item 3", weight: 30, value: 17 },
-];
-const capacity = 45;
-const result = knapsack(items, capacity);
-console.log("Total Value:", result.totalValue);
-console.log("Items in Knapsack:", result.knapsack);
+// const items = [
+//   { name: "Item 1", weight: 10, value: 5 },
+//   { name: "Item 2", weight: 20, value: 12 },
+//   { name: "Item 3", weight: 30, value: 17 },
+// ];
+// const capacity = 45;
+// const result = knapsack(items, capacity);

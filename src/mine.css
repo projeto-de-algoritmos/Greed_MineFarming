@@ -1,3 +1,7 @@
+* {
+  font-family: MinecraftFont;
+}
+
 .page {
   display: flex;
   flex-direction: column;
@@ -25,7 +29,6 @@
   padding: 20px;
   margin: 20px;
   border: 2px solid #05de0d; /* Borda ao redor do retângulo */
-  /* Outras propriedades de estilização para o container de descrição */
 }
 
 .description {
@@ -36,13 +39,17 @@
 .knapsack {
 	display: flex;
 	justify-content: flex-start;
-	border: 1px solid #de1717; 
+	border: 4px solid #0c720f;; 
 	width: 100%;
 
 }
 
+.input {
+  margin-top: 5px;
+}
+
 .plant-container {
-	border: 3px solid #6f4206; 
+	border: 2px solid #6f4206; 
 	background-color: #ffff; /* Cor de fundo da página */
   margin: 0;
   display: flex;
@@ -53,23 +60,19 @@
 
 }
 
+.selecti-container {
+  margin-top: 6%;
+}
+
 .handle-game {
   display: flex;
   flex-direction: column;
-	border: 1px solid #cf09d5; 
+	/* border: 2px solid #857c11;  */
 	width: 65%;
+  padding: 1%;
   background-color: #f0f0f0;
 
 }
-
-.handle-result {
-	border: 1px solid #020202; 
-}
-
-/* 
-body {
-	font-family: 'MinecraftFont', sans-serif;
-} */
 
 @font-face {
 	font-family: 'MinecraftFont';
