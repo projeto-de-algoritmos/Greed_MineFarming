@@ -14,55 +14,89 @@ function Mine() {
   const [progress, setProgress] = useState();  // Estado para controlar o valor da barra de progresso
   const [userValue, setUserValue] = useState(0);
   const [answer, setAnswer] = useState();
+  const [trigo, setTrigo] = useState(false)
+  const [batata, setBatata] = useState(false)
+  const [cenoura, setCenoura] = useState(false)
+  const [beterraba, setBeterraba] = useState(false)
+  const [melancia, setMelancia] = useState(false)
+  const [abobora, setAbobora] = useState(false)
   
   const handleRegister = () => {    
     if (knapsackLimit - inputAmount >= 0) {
-      setKnapsackLimit(knapsackLimit - inputAmount);
-      setProgress(progress + inputAmount);
       switch (inputPlant) {
         case "trigo":
-          if(inputAmount <= plantsWeight){
+          if(inputAmount <= plantsWeight[0] && !trigo){
             setUserValue(userValue + ((plantsValue[0] / plantsWeight[0]) * inputAmount))
+            setTrigo(true)
+            setKnapsackLimit(knapsackLimit - inputAmount);
+            setProgress(progress + inputAmount);
+          } else if(trigo) {
+            console.log("planta já adicionada")
           } else {
             console.log("peso ultrapassou o disponível")
           }
           break;
 
         case "batata":
-          if(inputAmount <= plantsWeight){
+          if(inputAmount <= plantsWeight[1] && !batata){
             setUserValue(userValue + ((plantsValue[1] / plantsWeight[1]) * inputAmount))
+            setBatata(true)
+            setKnapsackLimit(knapsackLimit - inputAmount);
+            setProgress(progress + inputAmount);
+          } else if(batata) {
+            console.log("planta já adicionada")
           } else {
             console.log("peso ultrapassou o disponível")
           }
           break;
           
         case "cenoura":
-          if(inputAmount <= plantsWeight){
+          if(inputAmount <= plantsWeight[2] && !cenoura){
             setUserValue(userValue + ((plantsValue[2] / plantsWeight[2]) * inputAmount))
+            setCenoura(true)
+            setKnapsackLimit(knapsackLimit - inputAmount);
+            setProgress(progress + inputAmount);
+          } else if(cenoura) {
+            console.log("planta já adicionada")
           } else {
             console.log("peso ultrapassou o disponível")
           }
           break;
           
         case "beterraba":
-          if(inputAmount <= plantsWeight){
+          if(inputAmount <= plantsWeight[3] && !beterraba){
             setUserValue(userValue + ((plantsValue[3] / plantsWeight[3]) * inputAmount))
+            setBeterraba(true)
+            setKnapsackLimit(knapsackLimit - inputAmount);
+            setProgress(progress + inputAmount);
+          } else if(beterraba) {
+            console.log("planta já adicionada")
           } else {
             console.log("peso ultrapassou o disponível")
           }
           break;
 
         case "melancia":
-          if(inputAmount <= plantsWeight){
+          if(inputAmount <= plantsWeight[4] && !melancia){
             setUserValue(userValue + ((plantsValue[4] / plantsWeight[4]) * inputAmount))
+            setMelancia(true)
+            setKnapsackLimit(knapsackLimit - inputAmount);
+            setProgress(progress + inputAmount);
+          } else if(melancia) {
+            console.log("planta já adicionada")
           } else {
             console.log("peso ultrapassou o disponível")
           }
           break;
           
         case "abobora":
-          if(inputAmount <= plantsWeight){
+          if(inputAmount <= plantsWeight[5] && !abobora){
             setUserValue(userValue + ((plantsValue[5] / plantsWeight[5]) * inputAmount))
+            setAbobora(true)
+            setKnapsackLimit(knapsackLimit - inputAmount);
+            setProgress(progress + inputAmount); 
+          } else if(abobora) {
+            console.log("planta já adicionada")
           } else {
             console.log("peso ultrapassou o disponível")
           }
@@ -78,6 +112,12 @@ function Mine() {
     setKnapsackLimit(100)
     setProgress(0)
     setUserValue(0)
+    setTrigo(false)
+    setBatata(false)
+    setCenoura(false)
+    setBeterraba(false)
+    setMelancia(false)
+    setAbobora(false)
     setAnswer(knapsack(generateProblem(), 100))
   }
 
@@ -85,6 +125,12 @@ function Mine() {
     setKnapsackLimit(100)
     setProgress(0)
     setUserValue(0)
+    setTrigo(false)
+    setBatata(false)
+    setCenoura(false)
+    setBeterraba(false)
+    setMelancia(false)
+    setAbobora(false)
   }
 
   const handleCheck = () => {
@@ -153,6 +199,7 @@ function Mine() {
         <div className="handle-game">
           <p>Progresso da colheita:</p>
           <LinearProgress variant="determinate" value={progress} />
+          <p>{progress}%</p>
 
           <div className="selection-container">
             <label htmlFor="plant">Selecione a Planta que quer adicionar:</label>
@@ -178,7 +225,7 @@ function Mine() {
           
           <div className="handle-result">
 
-            <p> Valor atual: {userValue} </p>
+            <p> Valor atual: {userValue.toPrecision(2)} </p>
 
             <button onClick={() => handleEmpty()}> Esvaziar plantação </button>
             <button onClick={() => handleCheck()}> Checar resultado </button>
