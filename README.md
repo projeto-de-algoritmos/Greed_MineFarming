@@ -10,7 +10,10 @@
 | 20/2063300  | João Pedro Rodrigues Morbeck |
 
 ## Sobre 
-MineFarming é um jogo, de temática de Minecraft, baseado no algoritmo Knapsack onde o usuário é colocado em uma situação em que deve escolher as plantas mais valiosas para encher sua plantação e maximizar o lucro de esmeralda. Para isso é utilizado um algoritmo gerador de problema e o algoritmo Knapsack para definir a resposta correta. O usuário ganha ao escolher as plantas corretas e as quantidades corretas. 
+MineFarming é um jogo, de temática de Minecraft, baseado no algoritmo Knapsack onde o usuário é colocado em uma situação em que deve escolher as plantas mais valiosas para encher sua plantação e maximizar o lucro de esmeralda. Para isso é utilizado um algoritmo gerador de problema e o algoritmo Knapsack para definir a resposta correta. O usuário ganha ao escolher as plantas corretas e as quantidades corretas.
+
+
+O vídeo pode ser encontrado [aqui](./public/video/entrega-greed.zip) ou pode ser visto do youtube através deste [link](https://youtu.be/MdsIuwSGmjM)
 
 ## Screenshots
 ![Tela Inicial](./src/imgs/mine_farm.png)
