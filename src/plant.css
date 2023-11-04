@@ -1,9 +1,10 @@
 .plant-image {
 	/* Defina o tamanho desejado para as imagens */
-	width: 20%; /* Largura em pixels */
-	height: 20%; /* Altura automática para manter a proporção original */
+	width: 32px; /* Largura em pixels */
+	height: 32px; /* Altura automática para manter a proporção original */
   }
 
 .plant {
 	font-size: 45%;
+	margin: 1.5%;
 }

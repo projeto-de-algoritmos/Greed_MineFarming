@@ -1,14 +1,21 @@
+@font-face {
+	font-family: 'minecraft';
+	src: url('../public/fonts/minecraft_font.ttf') format('ttf');
+}
+
 * {
-  font-family: MinecraftFont;
+  font-family: minecraft;
+}
+
+body {
+  background-color: #f0f0f0;
 }
 
 .page {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #f0f0f0; /* Cor de fundo da página */
-  width: 98vw; /* 100% da largura da viewport */
-  height: 98vh; /* 100% da altura da viewport */
+  background-color: #f0f0f0;
   margin: 0; 
   padding: 0; 
 }
@@ -36,45 +43,42 @@
   color:#ffff;
 }
 
-.knapsack {
-	display: flex;
-	justify-content: flex-start;
-	border: 4px solid #0c720f;; 
-	width: 100%;
-
-}
-
 .input {
   margin-top: 5px;
 }
 
 .plant-container {
-	border: 2px solid #6f4206; 
-	background-color: #ffff; /* Cor de fundo da página */
-  margin: 0;
+	border: 2px solid #6f4206;
+  background-color: white; 
+  width: 100%;
+  margin: 0px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items:baseline;
-  flex-wrap: wrap;
-
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: no-wrap;
+  row-gap: 0px;
+  align-content: center;
 }
 
-.selecti-container {
-  margin-top: 6%;
-}
 
 .handle-game {
   display: flex;
-  flex-direction: column;
-	/* border: 2px solid #857c11;  */
-	width: 65%;
-  padding: 1%;
-  background-color: #f0f0f0;
-
+    flex-direction: column;
+    width: 90%;
+    padding: 5%;
+    border: 3px solid #0c720f;
+    background-color: #f0f0f0;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    align-content: center;
 }
 
-@font-face {
-	font-family: 'MinecraftFont';
-	src: url('./assets/minecraft_font.ttf') format('truetype');
-  }
+button {
+  margin: 5%;
+}
+
+.button-container {
+  display: flex
+}

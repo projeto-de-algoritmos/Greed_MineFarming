@@ -2,6 +2,8 @@ import "./mine.css";
 import Plant from "./plant";
 import { useEffect, useState } from "react"; // Importe o useState
 import LinearProgress from '@mui/material/LinearProgress';
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 import knapsack from "./utils/knapsack";
 
 function Mine() {
@@ -20,6 +22,11 @@ function Mine() {
   const [beterraba, setBeterraba] = useState(false)
   const [melancia, setMelancia] = useState(false)
   const [abobora, setAbobora] = useState(false)
+  const [showWinAlert, setShowWinAlert] = useState(false);
+  const [showLoseAlert, setShowLoseAlert] = useState(false);
+  const [showFullAlert, setShowFullAlert] = useState(false);
+  const [PlantAddedAlert, setPlantAddedAlert] = useState(false);
+  const [FullWeightAlert, setFullWeightAlert] = useState(false);
   
   const handleRegister = () => {    
     if (knapsackLimit - inputAmount >= 0) {
@@ -30,9 +37,11 @@ function Mine() {
             setTrigo(true)
             setKnapsackLimit(knapsackLimit - inputAmount);
             setProgress(progress + inputAmount);
-          } else if(trigo) {
+          } else if (trigo) {
+            setPlantAddedAlert(true)
             console.log("planta já adicionada")
           } else {
+            setFullWeightAlert(true)
             console.log("peso ultrapassou o disponível")
           }
           break;
@@ -43,9 +52,11 @@ function Mine() {
             setBatata(true)
             setKnapsackLimit(knapsackLimit - inputAmount);
             setProgress(progress + inputAmount);
-          } else if(batata) {
+          } else if (batata) {
+            setPlantAddedAlert(true)
             console.log("planta já adicionada")
           } else {
+            setFullWeightAlert(true)
             console.log("peso ultrapassou o disponível")
           }
           break;
@@ -56,9 +67,11 @@ function Mine() {
             setCenoura(true)
             setKnapsackLimit(knapsackLimit - inputAmount);
             setProgress(progress + inputAmount);
-          } else if(cenoura) {
+          } else if (cenoura) {
+            setPlantAddedAlert(true)
             console.log("planta já adicionada")
           } else {
+            setFullWeightAlert(true)
             console.log("peso ultrapassou o disponível")
           }
           break;
@@ -69,9 +82,11 @@ function Mine() {
             setBeterraba(true)
             setKnapsackLimit(knapsackLimit - inputAmount);
             setProgress(progress + inputAmount);
-          } else if(beterraba) {
+          } else if (beterraba) {
+            setPlantAddedAlert(true)>
             console.log("planta já adicionada")
           } else {
+            setFullWeightAlert(true)
             console.log("peso ultrapassou o disponível")
           }
           break;
@@ -82,9 +97,11 @@ function Mine() {
             setMelancia(true)
             setKnapsackLimit(knapsackLimit - inputAmount);
             setProgress(progress + inputAmount);
-          } else if(melancia) {
+          } else if (melancia) {
+            setPlantAddedAlert(true)
             console.log("planta já adicionada")
           } else {
+            setFullWeightAlert(true)
             console.log("peso ultrapassou o disponível")
           }
           break;
@@ -95,15 +112,18 @@ function Mine() {
             setAbobora(true)
             setKnapsackLimit(knapsackLimit - inputAmount);
             setProgress(progress + inputAmount); 
-          } else if(abobora) {
+          } else if (abobora) {
+            setPlantAddedAlert(true)
             console.log("planta já adicionada")
           } else {
+            setFullWeightAlert(true)
             console.log("peso ultrapassou o disponível")
           }
           break;  
       }
 
     } else {
+      setShowFullAlert(true)
       console.log("passou do limite")
     }
   };
@@ -135,9 +155,11 @@ function Mine() {
 
   const handleCheck = () => {
     if (knapsackLimit == 0){
-      if(userValue >= answer){
+      if (userValue >= answer) {
+        setShowWinAlert(true)
         console.log("ganhou")
       } else {
+        setShowLoseAlert(true)
         console.log("perdeu")
       }
     }
@@ -186,18 +208,17 @@ function Mine() {
         </div>
       </div>
 
-      <div className="knapsack">
-        <div className="plant-container">
-          <Plant type={"Trigo"} value={plantsValue[0]} weight={plantsWeight[0]} image="https://i.imgur.com/Dm8wkHi.jpg" />
-          <Plant type={"Batata"} value={plantsValue[1]} weight={plantsWeight[1]} image="https://i.imgur.com/bWT8w9c.jpg" />
-          <Plant type={"Cenoura"} value={plantsValue[2]} weight={plantsWeight[2]} image="https://i.imgur.com/TDxiSZE.jpg" />
-          <Plant type={"Beterraba"} value={plantsValue[3]} weight={plantsWeight[3]} image="https://i.imgur.com/GvljP5e.jpg" />
-          <Plant type={"Melancia"} value={plantsValue[4]} weight={plantsWeight[4]} image="https://i.imgur.com/NWrAQPW.jpg" />
-          <Plant type={"Abóbora"} value={plantsValue[5]} weight={plantsWeight[5]} image="https://i.imgur.com/ei3Qtgf.jpg"  />
-        </div>
+      <div className="plant-container">
+        <Plant type={"Trigo"} value={plantsValue[0]} weight={plantsWeight[0]} image="https://i.imgur.com/Dm8wkHi.jpg" />
+        <Plant type={"Batata"} value={plantsValue[1]} weight={plantsWeight[1]} image="https://i.imgur.com/bWT8w9c.jpg" />
+        <Plant type={"Cenoura"} value={plantsValue[2]} weight={plantsWeight[2]} image="https://i.imgur.com/TDxiSZE.jpg" />
+        <Plant type={"Beterraba"} value={plantsValue[3]} weight={plantsWeight[3]} image="https://i.imgur.com/GvljP5e.jpg" />
+        <Plant type={"Melancia"} value={plantsValue[4]} weight={plantsWeight[4]} image="https://i.imgur.com/NWrAQPW.jpg" />
+        <Plant type={"Abóbora"} value={plantsValue[5]} weight={plantsWeight[5]} image="https://i.imgur.com/ei3Qtgf.jpg"  />
+      </div>
 
         <div className="handle-game">
-          <p>Progresso da colheita:</p>
+          <p>Ocupação da plantação:</p>
           <LinearProgress variant="determinate" value={progress} />
           <p>{progress}%</p>
 
@@ -221,18 +242,49 @@ function Mine() {
             onChange={(e) => setInputAmount(e.target.valueAsNumber)} // Atualiza o estado com o valor do input
           />
 
-          <button onClick={() => handleRegister()}>Implemente a quantidade</button>
+          <button onClick={() => handleRegister()}>Plante a quantidade</button>
           
           <div className="handle-result">
 
-            <p> Valor atual: {userValue.toPrecision(2)} </p>
+            <p> Esmeraldas: {userValue.toPrecision(2)} </p>
+            <div className="button-container">
+              <button onClick={() => handleEmpty()}> Esvaziar plantação </button>
+              <button onClick={() => handleCheck()}> Checar resultado </button>
+              <button onClick={() => handleReset()}> Reiniciar </button>
+            </div>
+            
+            {showWinAlert && (
+            <Stack sx={{ width: '100%' }} spacing={2}>
+              <Alert variant="filled" onClose={() => setShowWinAlert(false)}>Parabéns! Você ganhou </Alert>
+            </Stack>
+            )}
+          
+            {showLoseAlert && (
+              <Stack sx={{ width: '100%' }} spacing={2}>
+                <Alert variant="filled" severity="error" onClose={() => setShowLoseAlert(false)}>Que pena, você perdeu </Alert>
+              </Stack>
+            )}
 
-            <button onClick={() => handleEmpty()}> Esvaziar plantação </button>
-            <button onClick={() => handleCheck()}> Checar resultado </button>
-            <button onClick={() => handleReset()}> Reiniciar </button>
-          </div>
+            {showFullAlert && (
+              <Stack sx={{ width: '100%' }} spacing={2}>
+                <Alert variant="filled" severity="warning" onClose={() => setShowFullAlert(false)}> Passou do limite </Alert>
+              </Stack>
+            )}
 
-        </div>
+            {PlantAddedAlert && (
+              <Stack sx={{ width: '100%' }} spacing={2}>
+                <Alert variant="filled" severity="warning" onClose={() => setPlantAddedAlert(false)}> Planta já adicionada </Alert>
+              </Stack>
+            )}   
+
+            {FullWeightAlert && (
+              <Stack sx={{ width: '100%' }} spacing={2}>
+                <Alert variant="filled" severity="warning" onClose={() => setFullWeightAlert(false)}> Peso ultrapassou o disponível </Alert>
+              </Stack>
+            )}   
+            
+          </div>      
+
       </div>
 
     </div>
